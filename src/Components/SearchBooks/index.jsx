@@ -28,25 +28,27 @@ export default function SearchBooks () {
 
     return (
         <>
-            <FormControl onSubmit={(e) => handleSearch(e)}>
-                <Flex>
-                    <Input 
-                        placeholder='Harry Potter...'
-                        w={1000}
-                        mr={1}
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
-                    />
-                    {/* <FormHelperText>Digite qualquer nome.</FormHelperText> */}
-                    <IconButton 
-                        aria-label='Search database'
-                        colorScheme='blue'
-                        type="submit"
-                        icon={<Search />}
-                        onClick={(e) => handleSearch(e)}
-                    />
-                </Flex>
-            </FormControl>
+            <form onSubmit={(e) => handleSearch(e)}>
+                <FormControl>
+                    <Flex>
+                        <Input 
+                            placeholder='Harry Potter...'
+                            w={1000}
+                            mr={1}
+                            value={searchText}
+                            onChange={(e) => setSearchText(e.target.value)}
+                        />
+                        {/* <FormHelperText>Digite qualquer nome.</FormHelperText> */}
+                        <IconButton 
+                            aria-label='Search database'
+                            colorScheme='blue'
+                            type="submit"
+                            icon={<Search />}
+                            onClick={(e) => handleSearch(e)}
+                        />
+                    </Flex>
+                </FormControl>
+            </form>
             <SearchBox data={data} isLoading={isLoading}/>
         </>
     )
