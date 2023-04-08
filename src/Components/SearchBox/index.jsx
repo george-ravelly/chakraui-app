@@ -1,5 +1,6 @@
 import { Box, Text, Grid, GridItem, Image, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
 import React from "react";
+import ItemBox from "../ItemBox";
 
 export default function SearchBox(props) {
     function gridItem() {
@@ -21,19 +22,10 @@ export default function SearchBox(props) {
         if (data.length === 0) return <></>
         return data.map(item => (
             <GridItem w='100%' key={item.id}>
-                <Box style={{display: 'flex', justifyContent: 'center'}}>
-                    <Image 
-                        style={{width: 140, height: 180}}
-                        src={item?.volumeInfo?.imageLinks?.smallThumbnail ? item?.volumeInfo?.imageLinks?.smallThumbnail : getNoImages()}
-                        alt='books'
-                    />
-                </Box>
-                <Text align={'center'}>{item.volumeInfo.title}</Text>
+                <ItemBox item={item} />
             </GridItem>
         ));
     }
-
-    const getNoImages = () => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.elo7.com.br%2Fplaca-decorativa-os-incriveis-sem-capa-30x20cm%2Fdp%2FC26C46&psig=AOvVaw1FMhLHX8L0n3HKIhYIfi6Y&ust=1680789113339000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPDEusLxkv4CFQAAAAAdAAAAABAE';
 
     return (
         <Grid templateColumns='repeat(3, 1fr)' gap={2} mt={5}>
